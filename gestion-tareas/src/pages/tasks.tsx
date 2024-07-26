@@ -53,16 +53,19 @@ const TasksPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen"> 
       <Header />
-      <div className="container">
-        <h1>Lista de Tareas</h1>
-        {showEditForm && (
-          <CreateTask taskToEdit={taskToEdit} onTaskSubmit={handleTaskSubmit} />
-        )}
-        <TaskView tasks={tasks} onEdit={handleEdit} onDelete={handleDelete} />
-      </div>
-      <Footer />
+      <main className="flex-grow">
+        <div className="container">
+          <h1 className="text-center text-gray-900 text-2xl font-bold">Lista de Tareas</h1>
+          <br></br>
+          {showEditForm && (
+            <CreateTask taskToEdit={taskToEdit} onTaskSubmit={handleTaskSubmit} />
+          )}
+          <TaskView tasks={tasks} onEdit={handleEdit} onDelete={handleDelete} />
+        </div>
+      </main>
+      <Footer/>
     </div>
   );
 };

@@ -10,7 +10,7 @@ function Header() {
   const handleSignOut = async () => {
     try {
       await logOut();
-      router.push('/'); // Redirige a la página de registro (RegistrationPage)
+      router.push("/"); // Redirige a la página de registro (RegistrationPage)
     } catch (error) {
       console.log(error);
     }
@@ -20,10 +20,8 @@ function Header() {
     <div>
       <div className="w-full h-full bg-gray-900 dark:bg-gray-100">
         <header className="lg:px-16 px-4 flex flex-wrap items-center py-4 shadow-lg">
-          {user ?<div className="flex-1 flex justify-between items-center">
-            <h1 className="text-3xl text-white dark:text-gray-800">
-            Hola {userData.displayName}{" "}
-              </h1>
+          {user ? (
+            <div className="flex-1 flex  items-center">
               {userData && userData.photoURL && (
                 <div className="mt-4 text-center">
                   <img
@@ -33,10 +31,15 @@ function Header() {
                   />
                 </div>
               )}
-          </div>:(
-            <div className="flex-1 flex justify-between items-center">
+              <h1 className="text-3xl text-white dark:text-gray-800 pl-4">
+                Hola {userData.displayName}
+              </h1>
+
+            </div>
+          ) : (
+            <div className="flex-1 flex items-center">
               <h1 className="text-3xl text-white dark:text-gray-800">
-                Hola Bienvenido{" "}
+                Hola Bienvenido
               </h1>
             </div>
           )}
@@ -65,27 +68,34 @@ function Header() {
                     Home
                   </a>
                 </li>
-                <li>
-                  <a
-                    className="md:p-4 py-3 px-0 block text-gray-700"
-                    href="./createTask"
-                  >
-                    Crear Tarea
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="md:p-4 py-3 px-0 block text-gray-700"
-                    href="./tasks"
-                  >
-                    Ver Tareas
-                  </a>
-                </li>
-                <li>
-                  <a className="md:p-4 py-3 px-0 block text-gray-700" onClick={handleSignOut}>
-                    Salir
-                  </a>
-                </li>{" "}
+                {user && (
+                  <>
+                    <li>
+                      <a
+                        className="md:p-4 py-3 px-0 block text-gray-700"
+                        href="./createTask"
+                      >
+                        Crear Tarea
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="md:p-4 py-3 px-0 block text-gray-700"
+                        href="./tasks"
+                      >
+                        Ver Tareas
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="md:p-4 py-3 px-0 block text-gray-700"
+                        onClick={handleSignOut}
+                      >
+                        Salir
+                      </a>
+                    </li>
+                  </>
+                )}
               </ul>
             </nav>
           </div>
@@ -94,4 +104,5 @@ function Header() {
     </div>
   );
 }
+
 export default Header;

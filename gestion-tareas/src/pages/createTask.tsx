@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Task } from "../models/task";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ConfirmMessageModal from "./components/ConfirmMessage";
 
 interface CreateTaskProps {
   taskToEdit?: Task | null;
@@ -22,6 +23,8 @@ const CreateTask: React.FC<CreateTaskProps> = ({
   const [status, setStatus] = useState<string>(
     taskToEdit?.status || "pendiente"
   );
+
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (taskToEdit) {
@@ -54,14 +57,21 @@ const CreateTask: React.FC<CreateTaskProps> = ({
       if (onTaskSubmit) {
         onTaskSubmit(newTask);
       }
+      setShowModal(true);
     } catch (error) {
       console.error("Error al manejar la tarea:", error);
     }
   };
 
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-200">
       <Header />
+      <br></br>
+      <br></br>
       <div className="flex flex-grow justify-center items-center">
         <div className="w-full max-w-lg bg-white rounded-lg p-8 shadow-lg">
           <header className="mb-5">
@@ -136,7 +146,12 @@ const CreateTask: React.FC<CreateTaskProps> = ({
           </form>
         </div>
       </div>
+      <br></br>
+      <br></br>
       <Footer />
+      {showModal && (
+        <ConfirmMessageModal message="¡Tarea creada exitosamente!" onClose={closeModal} />
+      )}
     </div>
   );
 };

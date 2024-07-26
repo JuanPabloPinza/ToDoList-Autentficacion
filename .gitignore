@@ -128,3 +128,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Firebase credentials and configuration files
+credentials-firebase.json
+firebase.json
+firebase.js
