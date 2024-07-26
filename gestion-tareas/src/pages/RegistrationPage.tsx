@@ -63,6 +63,13 @@ const RegistrationPage: React.FC<RegistrationFormProps> = ({ onRegister }) => {
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
           </div>
+          <img
+              className="w-20 mx-auto mb-5"
+              src="https://cdn-icons-png.flaticon.com/512/2098/2098402.png"
+              alt="Tiger icon"
+            />
+            <h2 className="text-2xl text-center font-bold text-gray-900">Inicio de sesiòn</h2>
+            <h1 className="text-2xl text-center font-bold text-gray-900">Gestor de Tareas G4</h1> <br/>
           <div className="w-full flex justify-center mt-4">
             <button
               onClick={handelSignIn}

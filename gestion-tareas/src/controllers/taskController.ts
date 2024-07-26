@@ -1,7 +1,6 @@
 // TaskController.ts
 import { Task, TaskModel } from '../models/task';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { auth } from '../firebase'; // Importa la configuración de Firebase para el frontend
+import { auth } from '../firebase'; 
 
 class TaskController {
     private model: TaskModel;

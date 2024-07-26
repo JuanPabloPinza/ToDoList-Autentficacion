@@ -13,7 +13,6 @@ const db = admin.firestore();
 
 app.use(express.json()); 
 
-// Middleware para verificar autenticación y obtener UID del usuario
 async function verifyAuth(req, res, next) {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -32,7 +31,7 @@ async function verifyAuth(req, res, next) {
     }
 }
 
-// Crear una nueva tarea
+
 app.post('/api/todolist', verifyAuth, async (req, res) => {
     try {
         const { name, date, description, status } = req.body;
@@ -55,7 +54,7 @@ app.post('/api/todolist', verifyAuth, async (req, res) => {
     }
 });
 
-// Eliminar una tarea por su ID
+
 app.delete('/api/todolist/:id', verifyAuth, async (req, res) => {
     try {
         const userUid = req.user.uid;
@@ -75,7 +74,7 @@ app.delete('/api/todolist/:id', verifyAuth, async (req, res) => {
     }
 });
 
-// Actualizar una tarea por su ID
+
 app.put('/api/todolist/:id', verifyAuth, async (req, res) => {
     try {
         const { name, date, description, status } = req.body;
@@ -96,7 +95,7 @@ app.put('/api/todolist/:id', verifyAuth, async (req, res) => {
     }
 });
 
-// Obtener una tarea por su ID
+
 app.get('/api/todolist/:id', verifyAuth, async (req, res) => {
     try {
         const userUid = req.user.uid;
@@ -115,7 +114,7 @@ app.get('/api/todolist/:id', verifyAuth, async (req, res) => {
     }
 });
 
-// Obtener todas las tareas del usuario autenticado
+
 app.get('/api/todolist', verifyAuth, async (req, res) => {
     try {
         const userUid = req.user.uid;

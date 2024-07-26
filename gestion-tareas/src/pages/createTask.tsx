@@ -47,7 +47,6 @@ const CreateTask: React.FC<CreateTaskProps> = ({
         await TaskController.addTask(newTask);
       }
 
-      // Limpieza del formulario
       setId("");
       setName("");
       setDescription("");
